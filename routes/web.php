@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GudangController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,17 @@ Route::controller(BrandController::class)->group(function () {
         Route::get('edit/{id}', 'edit')->name('brand.edit');
         Route::patch('update/{id}', 'update')->name('brand.update');
         Route::delete('destroy/{id}', 'destroy')->name('brand.destroy');
+    });
+});
+
+Route::controller(ProductController::class)->group(function () {
+    Route::prefix('product')->group(function () {
+        Route::get('', 'index')->name('product.index');
+        Route::get('create', 'create')->name('product.create');
+        Route::post('store', 'store')->name('product.store');
+        Route::get('show/{id}', 'show')->name('product.show');
+        Route::get('edit/{id}', 'edit')->name('product.edit');
+        Route::patch('update/{id}', 'update')->name('product.update');
+        Route::delete('destroy/{id}', 'destroy')->name('product.destroy');
     });
 });
