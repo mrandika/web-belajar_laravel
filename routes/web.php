@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GudangController;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,17 @@ Route::controller(GudangController::class)->group(function () {
         Route::get('edit/{id}', 'edit')->name('gudang.edit');
         Route::patch('update/{id}', 'update')->name('gudang.update');
         Route::delete('destroy/{id}', 'destroy')->name('gudang.destroy');
+    });
+});
+
+Route::controller(BrandController::class)->group(function () {
+    Route::prefix('brand')->group(function () {
+        Route::get('', 'index')->name('brand.index');
+        Route::get('create', 'create')->name('brand.create');
+        Route::post('store', 'store')->name('brand.store');
+        Route::get('show/{id}', 'show')->name('brand.show');
+        Route::get('edit/{id}', 'edit')->name('brand.edit');
+        Route::patch('update/{id}', 'update')->name('brand.update');
+        Route::delete('destroy/{id}', 'destroy')->name('brand.destroy');
     });
 });
